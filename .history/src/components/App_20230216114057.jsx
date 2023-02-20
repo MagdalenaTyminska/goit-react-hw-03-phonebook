@@ -54,21 +54,6 @@ export class App extends Component {
     this.setState({ contacts: filtered });
   };
 
-  addToLocalStorage = () => {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  };
-
-  componentDidUpdate() {
-    this.addToLocalStorage();
-  }
-
-  componentDidMount() {
-    let contactsStorage = localStorage.getItem('contacts');
-    contactsStorage
-      ? this.setState({ contacts: JSON.parse(contactsStorage) })
-      : this.addToLocalStorage();
-  }
-
   render() {
     return (
       <>
