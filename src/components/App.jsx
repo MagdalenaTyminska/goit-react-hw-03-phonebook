@@ -54,19 +54,24 @@ export class App extends Component {
     this.setState({ contacts: filtered });
   };
 
-  addToLocalStorage = () => {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  };
-
-  componentDidUpdate() {
-    this.addToLocalStorage();
+  componentDidUpdate(prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      const LocalStorageUpdate = JSON.stringify(this.state.contacts);
+      localStorage.setItem('contacts', LocalStorageUpdate);
+    }
   }
 
   componentDidMount() {
-    let contactsStorage = localStorage.getItem('contacts');
-    contactsStorage
-      ? this.setState({ contacts: JSON.parse(contactsStorage) })
-      : this.addToLocalStorage();
+    const contactsStorage = JSON.parse(localStorage.getItem('contacts'));
+
+    if (!contactsStorage) {
+      return;
+    } else
+      try {
+        this.setState({ contacts: contactsStorage });
+      } catch (error) {
+        console.log(error);
+      }
   }
 
   render() {
