@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
 export class ContactList extends Component {
+  static propTypes = {
+    handleRemove: PropTypes.func,
+    contacts: PropTypes.array,
+    filter: PropTypes.string,
+  };
   render() {
     const { filter, contacts, handleRemove } = this.props;
     return (
@@ -36,9 +41,3 @@ export class ContactList extends Component {
     );
   }
 }
-
-ContactList.propTypes = {
-  handleRemove: PropTypes.func,
-  contacts: PropTypes.array,
-  filter: PropTypes.string,
-};

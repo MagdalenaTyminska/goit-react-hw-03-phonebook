@@ -4,11 +4,15 @@ import { InputField } from './InputField/InputField';
 import css from './ContactForm.module.css';
 
 export class ContactForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: '',
   };
-  
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -52,6 +56,3 @@ export class ContactForm extends Component {
   }
 }
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
