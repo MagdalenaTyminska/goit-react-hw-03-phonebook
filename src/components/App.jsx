@@ -62,16 +62,16 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    const contactsStorage = JSON.parse(localStorage.getItem('contacts'));
+    const contactsStorage = localStorage.getItem('contacts');
 
-    if (!contactsStorage) {
-      return;
-    } else
+    if (contactsStorage) {
       try {
-        this.setState({ contacts: contactsStorage });
+        const parsed = JSON.parse(contactsStorage);
+        this.setState({ contacts: parsed });
       } catch (error) {
         console.log(error);
       }
+    }
   }
 
   render() {
