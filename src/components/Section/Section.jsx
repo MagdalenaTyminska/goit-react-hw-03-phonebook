@@ -17,7 +17,3 @@ export class Section extends Component {
     );
   }
 }
-
-Section.propTypes = {
-  title: PropTypes.string.isRequired,
-};
