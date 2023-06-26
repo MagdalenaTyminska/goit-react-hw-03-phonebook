@@ -6,6 +6,8 @@ import css from './ContactForm.module.css';
 export class ContactForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    name: PropTypes.string,
+    number: PropTypes.number,
   };
 
   state = {
@@ -55,4 +57,3 @@ export class ContactForm extends Component {
     );
   }
 }
-
